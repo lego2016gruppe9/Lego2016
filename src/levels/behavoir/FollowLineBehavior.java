@@ -4,9 +4,9 @@ import Parcour.RobotControl;
 
 public class FollowLineBehavior extends AbstractBehavior {
 
-	private final float startSpeed = 200;
-	private final float startParameter = 0.75f;
-	private final float kp = 80f;
+	private final float startSpeed = 400;
+	private final float startParameter = 0.21f;
+	private final float kp = 480f;
 	private long lastFound;
 
 	public FollowLineBehavior(RobotControl robot) {
@@ -15,7 +15,7 @@ public class FollowLineBehavior extends AbstractBehavior {
 
 	@Override
 	public boolean takeControl() {
-		return robot.getColorSensorValue() > 0.6;
+		return robot.getColorSensorValue() > 0.22;
 	}
 
 	@Override
