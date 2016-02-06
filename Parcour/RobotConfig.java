@@ -6,6 +6,8 @@ import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
+import lejos.hardware.motor.EV3MediumRegulatedMotor;
+
 
 public class RobotConfig {
 
@@ -13,7 +15,7 @@ public class RobotConfig {
 	private final EV3LargeRegulatedMotor rightMotor;
 	private final EV3ColorSensor colorSensor;
 	private  EV3UltrasonicSensor us;
-
+    private  EV3MediumRegulatedMotor ancillaryMotor;
 	private  EV3TouchSensor tleft;
 	private  EV3TouchSensor tright;
 
@@ -21,6 +23,7 @@ public class RobotConfig {
 		this.leftMotor = new EV3LargeRegulatedMotor(MotorPort.A);
 		this.rightMotor = new EV3LargeRegulatedMotor(MotorPort.B);
 		this.colorSensor = new EV3ColorSensor(SensorPort.S4);
+		this.ancillaryMotor = new EV3MediumRegulatedMotor(MotorPort.C);
 		
 		this.us = new EV3UltrasonicSensor(SensorPort.S2);
 	    this.tleft = new EV3TouchSensor(SensorPort.S3);
@@ -34,6 +37,9 @@ public class RobotConfig {
 		return leftMotor;
 	}
 
+	public EV3MediumRegulatedMotor getAncillaryMotor() {
+		return ancillaryMotor;
+	}
 	/**
 	 * @return the rightMotor
 	 */

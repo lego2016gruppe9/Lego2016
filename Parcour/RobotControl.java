@@ -69,7 +69,17 @@ public class RobotControl {
 		config.getLeftMotor().stop();
 		config.getRightMotor().stop();
 	}
-
+     
+	public void stopancillaryMotor(){
+		config.getAncillaryMotor().flt();
+		
+		config.getAncillaryMotor().stop();
+	} 
+	
+	public void turnancillayMotor(int angle){
+		config.getAncillaryMotor().rotate(angle);
+	}
+	
 	public void drive(float leftSpeed, float rightSpeed) {
 		config.getLeftMotor().setSpeed(leftSpeed);
 		config.getRightMotor().setSpeed(rightSpeed);
