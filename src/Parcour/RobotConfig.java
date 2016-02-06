@@ -9,8 +9,8 @@ import lejos.hardware.sensor.EV3UltrasonicSensor;
 
 public class RobotConfig {
 
-	private final EV3LargeRegulatedMotor leftMotor;
-	private final EV3LargeRegulatedMotor rightMotor;
+	final EV3LargeRegulatedMotor leftMotor;
+	final EV3LargeRegulatedMotor rightMotor;
 	private final EV3ColorSensor colorSensor;
 	private  EV3UltrasonicSensor us;
 

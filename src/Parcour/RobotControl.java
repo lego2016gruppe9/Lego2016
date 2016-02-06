@@ -8,6 +8,7 @@ import lejos.robotics.filter.MeanFilter;
 public class RobotControl {
 
 	private RobotConfig config;
+	private float maxSpeed;
 
 	public RobotControl(RobotConfig config) {
 		this.config = config;
@@ -56,6 +57,12 @@ public class RobotControl {
 		config.getLeftMotor().stop();
 		config.getRightMotor().stop();
 	}
+	public void drive(float speed) {
+		config.leftMotor.setSpeed(speed);
+		config.rightMotor.setSpeed(speed);
+		config.leftMotor.forward();
+		config.rightMotor.forward();
+	}
 
 	public void drive(float leftSpeed, float rightSpeed) {
 		config.getLeftMotor().setSpeed(leftSpeed);
@@ -68,5 +75,16 @@ public class RobotControl {
 	public RobotConfig getConfig() {
 		return config;
 	}
+
+	public float maxSpeed() {
+		// TODO Auto-generated method stub
+		return this.maxSpeed;
+	}
+	
+	public float getSpeed() {
+		return (config.leftMotor.getRotationSpeed() + config.rightMotor.getRotationSpeed()) / 2.0f;
+	}
+
+
 
 }
