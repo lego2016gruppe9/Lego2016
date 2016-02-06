@@ -10,53 +10,62 @@ public class TestMaze {
 		Findwall();
 	}
 
-	
-	public static void turn(RobotConfig config, int angle) {
+	public static void turn(RobotControl robot,RobotConfig config, int angle) {
 		if (config.getLeftMotor().isStalled() && config.getRightMotor().isStalled()) {
-			config.getLeftMotor().rotate(angle);
-			config.getRightMotor().rotate(angle);
+			config.getLeftMotor().rotateTo(angle, true);
+			config.getRightMotor().rotateTo(angle, true);
 
-			while (config.getLeftMotor().isMoving() && config.getRightMotor().isMoving()) {
-				config.getLeftMotor().forward();
-				config.getRightMotor().forward();
-			}
+//			while (config.getLeftMotor().isMoving() && config.getRightMotor().isMoving()) {
+//				config.getLeftMotor().forward();
+//				config.getRightMotor().forward();
+//			//	robot.drive(500f, 500f);
+//			}
 
 		}
 	}
-	
+
 	public static void Findwall() {
 		RobotConfig config = new RobotConfig();
 		RobotControl robot = new RobotControl(config);
 		// robot.drive(400f, 400f);
+		float distance = robot.getDistanceValue();
 
-		while (true) {
-			robot.drive(400f, 400f);
-//			while (robot.getDistanceValue() <= 0.08) {
-//				
-//				System.out.println(robot.getDistanceValue());
-//				// Delay.msDelay(1000);
-//			}
-			if (robot.getDistanceValue() > 0.08) {
+		while (0.0 <= distance && distance < 0.4) {
+			robot.drive(300f, 300f);
+			// while (robot.getDistanceValue() <= 0.08) {
+			//
+			// System.out.println(robot.getDistanceValue());
+			// // Delay.msDelay(1000);
+			// }
+
+			if (distance > 0.2) {
 				robot.stopRobot();
+				turn(robot,config, -10);
+				robot.drive(300f, 300f);
+				Delay.msDelay(500);
+				robot.stopRobot();
+				turn(robot,config, 10);
 			}
-			
-			if (robot.getDistanceValue() <= 0.02) {
-				turn(config, 5);
+			if (distance <= 0.05) {
+				robot.stopRobot();
+				turn(robot,config, 10);
+				robot.drive(300f, 300f);
+				Delay.msDelay(500);
 			}
-			
-			turn(config, -10);
-			
-//			if (config.getLeftMotor().isStalled() && config.getRightMotor().isStalled()) {
-//				config.getLeftMotor().rotate(-10);
-//				config.getRightMotor().rotate(-10);
-//
-//				while (config.getLeftMotor().isMoving() && config.getRightMotor().isMoving()) {
-//					config.getLeftMotor().forward();
-//					config.getRightMotor().forward();
-//				}
-//
-//			}
+
+			// if (config.getLeftMotor().isStalled() &&
+			// config.getRightMotor().isStalled()) {
+			// config.getLeftMotor().rotate(-10);
+			// config.getRightMotor().rotate(-10);
+			//
+			// while (config.getLeftMotor().isMoving() &&
+			// config.getRightMotor().isMoving()) {
+			// config.getLeftMotor().forward();
+			// config.getRightMotor().forward();
+			// }
+			//
+			// }
+
 		}
 	}
-
 }
