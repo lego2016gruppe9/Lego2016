@@ -10,9 +10,12 @@ import lejos.robotics.navigation.DifferentialPilot;
 public class RobotControl {
 
 	private RobotConfig config;
+
 	private final float Tire_diameter = 30; // in mm
     private final float pi = 3.1415926f;
     private final float LengthOfWheel = 132; // in mm
+
+	private float maxSpeed;
 
 	public RobotControl(RobotConfig config) {
 		this.config = config;
@@ -105,6 +108,12 @@ public class RobotControl {
 		config.getLeftMotor().stop();
 		config.getRightMotor().stop();
 	}
+	public void drive(float speed) {
+		config.leftMotor.setSpeed(speed);
+		config.rightMotor.setSpeed(speed);
+		config.leftMotor.forward();
+		config.rightMotor.forward();
+	}
 
 	public void drive(float leftSpeed, float rightSpeed) {
 		config.getLeftMotor().setSpeed(leftSpeed);
@@ -179,5 +188,16 @@ public class RobotControl {
 	public RobotConfig getConfig() {
 		return config;
 	}
+
+	public float maxSpeed() {
+		// TODO Auto-generated method stub
+		return this.maxSpeed;
+	}
+	
+	public float getSpeed() {
+		return (config.leftMotor.getRotationSpeed() + config.rightMotor.getRotationSpeed()) / 2.0f;
+	}
+
+
 
 }

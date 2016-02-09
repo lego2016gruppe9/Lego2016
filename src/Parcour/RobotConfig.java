@@ -11,9 +11,10 @@ import lejos.robotics.navigation.DifferentialPilot;
 
 public class RobotConfig {
 
-	private final EV3LargeRegulatedMotor leftMotor;
-	private final EV3LargeRegulatedMotor rightMotor;
 	private final EV3MediumRegulatedMotor AncillaryMotor;
+
+	final EV3LargeRegulatedMotor leftMotor;
+	final EV3LargeRegulatedMotor rightMotor;
 	private final EV3ColorSensor colorSensor;
 	private  EV3UltrasonicSensor us;
 	private  EV3TouchSensor tleft;
