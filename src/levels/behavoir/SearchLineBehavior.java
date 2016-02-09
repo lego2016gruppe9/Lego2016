@@ -14,13 +14,13 @@ public class SearchLineBehavior extends AbstractBehavior {
 
 	@Override
 	public boolean takeControl() {
-		return robot.getColorSensorValue() <= 0.22;
+		return robot.getColorSensorValue() <= 0.21;
 	}
 
 	@Override
 	protected void onInit() {
 		vl = 400;
-		vr = 300;
+		vr =150;
 		turnRight = true;
 		System.out.println("searching line");
 		robot.enableColorSensor();
@@ -31,7 +31,7 @@ public class SearchLineBehavior extends AbstractBehavior {
 	protected void loop() {
 
 		float step = turnRight ? 0.1f : -0.1f;
-
+		
 		vl += step;
 		vr -= step;
 

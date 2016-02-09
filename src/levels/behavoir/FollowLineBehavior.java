@@ -6,7 +6,7 @@ public class FollowLineBehavior extends AbstractBehavior {
 
 	private final float startSpeed = 400;
 	private final float startParameter = 0.21f;
-	private final float kp = 480f;
+	private final float kp = 660f;
 	private long lastFound;
 
 	public FollowLineBehavior(RobotControl robot) {
@@ -15,7 +15,7 @@ public class FollowLineBehavior extends AbstractBehavior {
 
 	@Override
 	public boolean takeControl() {
-		return robot.getColorSensorValue() > 0.22;
+		return robot.getColorSensorValue() > 0.21;
 	}
 
 	@Override
